@@ -1,0 +1,20 @@
+{
+  "name": "nqm-json-import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "toby.ealden@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@nqminds/nqm-utils": "0.0.2",
+    "debug": "^2.2.0",
+    "lodash": "^3.10.1",
+    "minimist": "^1.2.0",
+    "moment": "^2.10.6",
+    "mongo-parse": "^1.0.2",
+    "nqm-utils": "git://github.com/nqminds/nqm-utils"
+  }
+}
