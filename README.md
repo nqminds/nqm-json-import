@@ -33,7 +33,7 @@ Import data to an existing dataset. As a primary key is given "upsert" operation
 
 It is possible to define the import parameters using a configuration file instead of via the command-line. When using this approach it is possible to specify mappings from the source data to the target dataset schema.
 
-The configuration file will vary depending on the type of data, but at a minimum it will contain details of the data source, the target dataset and the schema mappings. There are example CSV configuration files in the repo.
+The configuration file will vary depending on the type of data, but at a minimum it will contain details of the data source, the target dataset and the schema mappings. There are example JSON configuration files in the repo.
 
 ```
 {
@@ -60,10 +60,10 @@ The configuration file will vary depending on the type of data, but at a minimum
   primaryKey: ["code"],
 
   /*
-   * The schemaMapping is a dictionary mapping the CSV headings to target schema field.
-   * If a CSV header column is defined in the schema the data will be copied to the named field in the dataset.
-   * If a CSV header column is defined as blank in the schema, the column will be skipped.
-   * If there is no entry for a given CSV heading, the data will be copied to a field with the name of the heading.
+   * The schemaMapping is a dictionary mapping the source JSON fields to target schema field.
+   * If a JSON field is defined in the schema the data will be copied to the named field in the dataset.
+   * If a JSON field is defined as blank in the schema, the column will be skipped.
+   * If there is no entry for a given JSON field, the data will be copied as-is.
    */
   "schemaMapping": {
     "properties.LSOA01CD": "code",
@@ -81,7 +81,7 @@ The configuration file will vary depending on the type of data, but at a minimum
 Clone this repository then:
 
 ```
-cd nqm-csv-import
+cd nqm-json-import
 npm install
 ```
 
