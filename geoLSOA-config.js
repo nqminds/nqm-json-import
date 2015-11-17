@@ -7,7 +7,7 @@
 module.exports = {
 
   commandHost: "http://localhost:3103",
-  credentials: "NJ-yUyZ7Xg:password",
+  credentials: "<tokenId:secret>",
   sourceFile: "./tests/geoLSOA.json",
   dataPath: "features",
 
