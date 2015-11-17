@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "bin": {
+    "nqm-json-import": "./nqm-json-import.js"
+  },
   "author": "toby.ealden@gmail.com",
   "license": "ISC",
   "dependencies": {

@@ -1,4 +1,6 @@
-/**
+#! /usr/bin/env node
+
+ /**
  * Created by toby on 16/11/15.
  */
 
