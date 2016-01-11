@@ -16,7 +16,7 @@ module.exports = {
    */
   "schema": {
     "geometryType": "string",
-    "coordinates": [],
+    "coordinates": {},
     "shapeLen": "number",
     "shapeArea": "Number",
     "name": "String",

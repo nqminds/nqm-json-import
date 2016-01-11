@@ -51,7 +51,7 @@ The configuration file will vary depending on the type of data, but at a minimum
    */
   "schema": {
     "geometryType": "string",
-    "coordinates": [],
+    "coordinates": {},
     "shapeLen": "number",
     "shapeArea": "Number",
     "name": "String",
