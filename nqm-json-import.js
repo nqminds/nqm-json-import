@@ -11,6 +11,9 @@
   var path = require("path");
   var config;
   var JSONImport = require("./lib/jsonImporter");
+  var pjson = require("./package.json");
+
+  console.log("nqm-json-import v%s", pjson.version);
 
   /*
    * config file
@@ -26,7 +29,7 @@
       config = require(configFile || "./default-config.js");
     } catch (err) {
       console.log("failed to parse config file %s: %s", configFile, err.message);
-      process.exit();
+      process.exit(-1);
     }
   }
 
@@ -38,8 +41,8 @@
   }
 
   if (!config.credentials) {
-    log("no credentials given");
-    process.exit();
+    console.log("no credentials given");
+    process.exit(-1);
   }
 
   /*
@@ -90,15 +93,28 @@
     log("data path: ", argv.dataPath);
     config.dataPath = argv.dataPath;
   }
+
+  if (argv.hasOwnProperty("startAt")) {
+    log("start at object %d", argv.startAt);
+    config.startAt = argv.startAt;
+  }
+
+  if (argv.endAt) {
+    log("end at object %d", argv.endAt);
+    config.endAt = argv.endAt;
+  }
+
   // Create a JSON importer instance.
   var importer = new JSONImport();
 
   // Initiate the import with our configuration.
   importer.start(config, function(err) {
     if (err) {
-      log("failed to import: %s", err.message);
+      console.log("failed to import: %s", err.message);
+      process.exit(-1);
     } else {
-      log("import finished");
+      console.log("import finished");
+      process.exit(0);
     }
   });
 
