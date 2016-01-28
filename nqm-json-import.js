@@ -70,6 +70,7 @@
    * dataset name
    */
   if (argv.datasetName) {
+    log("dataset name is %s", argv.datasetName);
     config.datasetName = argv.datasetName;
   }
 
