@@ -19,7 +19,7 @@
    * config file
    */
   if (!argv.config) {
-    log("no config file given - using default");
+    log("no config file given - using defaults");
     config = {};
   } else {
     var configFile = path.resolve(argv.config);
@@ -90,16 +90,41 @@
     config.primaryKey = argv.primaryKey.split(",");
   }
 
+  /*
+   * dataPath
+   */
   if (argv.dataPath) {
     log("data path: ", argv.dataPath);
     config.dataPath = argv.dataPath;
   }
 
+  /*
+   * upsertMode
+   */
+  if (argv.upsertMode) {
+    log("upsert mode: ", argv.upsertMode);
+    config.upsertMode = (argv.upsertMode === "true") ? true : false;
+  }
+
+  /*
+   * bulkCount
+   */
+  if (argv.bulkCount) {
+    log("bulk count: ", argv.bulkCount);
+    config.bulkCount = argv.bulkCount;
+  }
+
+  /*
+   * startAt
+   */
   if (argv.hasOwnProperty("startAt")) {
     log("start at object %d", argv.startAt);
     config.startAt = argv.startAt;
   }
 
+  /*
+   * endAt
+   */
   if (argv.endAt) {
     log("end at object %d", argv.endAt);
     config.endAt = argv.endAt;
