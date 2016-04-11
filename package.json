@@ -1,5 +1,9 @@
 {
   "name": "nqm-json-import",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nqminds/nqm-json-import.git"
+  },  
   "version": "0.0.10",
   "description": "",
   "main": "index.js",
