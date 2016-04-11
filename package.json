@@ -13,6 +13,10 @@
   "bin": {
     "nqm-json-import": "./nqm-json-import.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nqminds/nqm-json-import.git"
+  },
   "author": "toby.ealden@gmail.com",
   "license": "ISC",
   "dependencies": {
