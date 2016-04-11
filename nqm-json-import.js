@@ -60,6 +60,13 @@
   }
 
   /*
+   * target folder
+   */
+  if (argv.targetFolder) {
+    config.targetFolder = argv.targetFolder;
+  }
+  
+  /*
    * target dataset
    */
   if (argv.targetDataset) {

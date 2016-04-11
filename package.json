@@ -1,5 +1,9 @@
 {
   "name": "nqm-json-import",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nqminds/nqm-json-import.git"
+  },  
   "version": "0.0.10",
   "description": "",
   "main": "index.js",
@@ -20,5 +24,8 @@
     "moment": "^2.10.6",
     "nqm-common-import": "0.0.4",
     "nqm-utils": "0.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^2.7.0"
   }
 }
