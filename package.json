@@ -22,8 +22,8 @@
     "lodash": "^3.10.1",
     "minimist": "^1.2.0",
     "moment": "^2.10.6",
-    "nqm-common-import": "0.0.4",
-    "nqm-utils": "0.0.4"
+    "nqm-common-import": "^0.0.5",
+    "nqm-utils": "^0.0.5"
   },
   "devDependencies": {
     "eslint": "^2.7.0"
