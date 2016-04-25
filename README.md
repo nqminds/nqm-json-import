@@ -12,70 +12,73 @@ Use sudo if you get EACCESS errors.
 ##basic usage
 
 ```
-DEBUG=log nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features
+nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features --targetFolder <target folder id> --basedOnSchema geojson
 ```
 
 Basic import of new dataset where the schema is inferred from the source JSON and no primary key is defined. The dataset will be created using a name based on the source file. Having no primary key means that it is not possible to update the data and all data will be appended to the dataset. The ```dataPath``` option indicates the path to the data in the source file.
 
 ```
-DEBUG=log nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features --primaryKey properties.LSOA01CD
+nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features --targetFolder <target folder id> --basedOnSchema geojson
 ```
 
-Import new dataset specifying a primary key. Subsequent updates are possible. The dataset will be created using a name based on the source file.
+Specifying the schema type using the ```basedOnSchema``` argument - in this case ```geojson```. This ensures that the data is imported in the correct format and will be understood by all applications expecting data conforming to the standard geojson format. 
 
 ```
-DEBUG=log nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json  --dataPath features --primaryKey properties.LSOA01CD --targetDataset 4ybvaLm2zx
+nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features --targetFolder <target folder id> --basedOnSchema geojson --primaryKey properties.LSOA01CD
 ```
 
-Import data to an existing dataset. As a primary key is given "upsert" operations will be performed.
+As above, but with the addition of a primary key specification. This makes subsequent updates possible.
+
+```
+nqm-json-import --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json  --dataPath features --primaryKey properties.LSOA01CD --targetDataset <target dataset id> --upsertMode true
+```
+
+Import data to an existing dataset. The ```upsertMode``` indicates that the data from ```sourceFile``` will update any existing data that matches the given primary key, and if no data matching the primary key is found the data will be inserted.
 
 ##advanced usage
 
-It is possible to define the import parameters using a configuration file instead of via the command-line. When using this approach it is possible to specify mappings from the source data to the target dataset schema.
+It is possible to define the import parameters using a configuration file instead of via the command-line. 
 
-The configuration file will vary depending on the type of data, but at a minimum it will contain details of the data source, the target dataset and the schema mappings. There are example JSON configuration files in the repo.
+The configuration file will vary depending on the type of data, but at a minimum it will contain details of the data source, the target dataset/folder. There are example JSON configuration files in the repo.
 
 ```
 {
-  commandHost: "http://cmd.nqminds.com",
-  credentials: "<tokenId:secret>",
-  sourceFile: "./tests/geoLSOA.json",
+  "credentials": "aaaaaaaa:bbbbbbbb",
+  "sourceFile": "./tests/geoLSOA.json",
+  "dataPath": "features",
+  "basedOnSchema": "geojson",
+  "targetFolder": "xxxxxxxxxx",
+  "upsertMode": false, 
 
-  /*
-   * The path to the data to be imported. Use dot notation if necessary.
-   */
-  dataPath: "features",
-
-  /*
-   * The schema of the target dataset.
-   */
   "schema": {
-    "geometryType": "string",
-    "coordinates": {},
-    "shapeLen": "number",
-    "shapeArea": "Number",
-    "name": "String",
-    "code": "String"
+    "properties": {      
+      "LSOA01CD": "string",
+      "LSOA01NM": "string"
+    }
   },
-  primaryKey: ["code"],
-
-  /*
-   * The schemaMapping is a dictionary mapping the source JSON fields to target schema field.
-   * If a JSON field is defined in the schema the data will be copied to the named field in the dataset.
-   * If a JSON field is defined as blank in the schema, the column will be skipped.
-   * If there is no entry for a given JSON field, the data will be copied as-is.
-   */
-  "schemaMapping": {
-    "properties.LSOA01CD": "code",
-    "properties.LSOA01NM": "name",
-    "properties.SHAPE_LEN": "shapeLen",
-    "properties.SHAPE_AREA": "shapeArea",
-    "geometry.type": "geometryType",
-    "geometry.coordinates": "coordinates",
-    "type": ""  // Skip
-  }
+  "primaryKey": ["properties.LSOA01CD"]    
 }
 ```
+
+#options
+
+```targetFolder``` - the id of the target folder (required)
+
+```bulkCount``` - specify the number of documents to process at once. If your data contains small documents, this can be set to a high number for improved performance.
+
+```upsertMode``` - set upsert mode, requires a primary key to be set
+
+```targetDataset``` - the id of the target dataset (required if updating)
+
+```commandHost``` - the destination TDX command endpoint
+
+```credentials```
+
+```sourceFile```
+
+```primaryKey``` - array of properties that specify the primary key of the data
+
+```schema``` - TODO - document
 
 ##build
 Clone this repository then:
@@ -84,6 +87,3 @@ Clone this repository then:
 cd nqm-json-import
 npm install
 ```
-
-
-

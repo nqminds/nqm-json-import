@@ -5,6 +5,8 @@
  */
 
 (function() {
+  process.env.DEBUG = "*";
+
   var log = require("debug")("main");
   var argv = require("minimist")(process.argv.slice(2));
   var fs = require("fs");
@@ -12,7 +14,7 @@
   var config;
   var JSONImport = require("./lib/jsonImporter");
   var pjson = require("./package.json");
-
+  
   console.log("nqm-json-import v%s", pjson.version);
 
   /*
@@ -136,7 +138,20 @@
     log("end at object %d", argv.endAt);
     config.endAt = argv.endAt;
   }
+  
+  /*
+   * basedOnSchema
+   */
+  if (argv.basedOnSchema) {
+    log("basedOnSchema is %s", argv.basedOnSchema);
+    config.basedOnSchema = argv.basedOnSchema;
+  }
 
+  if (!config.targetFolder) {
+    log("ERROR: not target folder specified");
+    process.exit(0);
+  }
+  
   // Create a JSON importer instance.
   var importer = new JSONImport();
 

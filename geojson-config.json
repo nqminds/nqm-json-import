@@ -1,0 +1,16 @@
+{
+  "credentials": "4kgyd0lpeb:password",
+  "sourceFile": "./tests/geoLSOA.json",
+  "dataPath": "features",
+  "basedOnSchema": "geojson",
+  "targetFolder": "4yxoB4SvlW",
+  "upsertMode": false, 
+
+  "schema": {
+    "properties": {      
+      "LSOA01CD": "string",
+      "LSOA01NM": "string"
+    }
+  },
+  "primaryKey": ["properties.LSOA01CD"]    
+}
