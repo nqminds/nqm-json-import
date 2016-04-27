@@ -9,6 +9,18 @@ npm install -g nqm-json-import
 
 Use sudo if you get EACCESS errors.
 
+##target folder
+The TDX currently only supports importing data to a resource folder, i.e. you can not import a dataset to the root of your TDX workspace. Consequently
+you must create a folder to receive the imported dataset before you begin.
+
+##access token
+You must create an access token with adequate permissions to add/edit a dataset in the target folder. To do this, go to the ```access tokens``` page
+on the TDX and create a token. Then go back to your target folder, and add permissions for the newly created access token to write to the folder.
+
+You can do this by clicking on the ```info``` icon of the folder, then clicking the ```share``` icon in the right side-bar. Click ```add trusted person```
+and then select the ```share tokens``` tab. In the ```share name``` field type the name of the access token you just created, and then 
+make sure you select ```Edit``` in the ```access``` drop-down. 
+
 ##basic usage
 
 Basic import of new dataset where the schema is inferred from the source JSON and no primary key is defined. The dataset will be created using a name based on the source file. Having no primary key means that it is not possible to update the data and all data will be appended to the dataset. The ```dataPath``` option indicates the path to the data in the source file.
