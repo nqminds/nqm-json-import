@@ -22,7 +22,8 @@
     "lodash": "^3.10.1",
     "minimist": "^1.2.0",
     "moment": "^2.10.6",
-    "nqm-common-import": "^0.0.7",
+    "mongo-parse": "^1.0.8",
+    "nqm-common-import": "^0.0.8",
     "nqm-utils": "^0.0.6"
   },
   "devDependencies": {
