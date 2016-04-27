@@ -158,7 +158,7 @@
   // Initiate the import with our configuration.
   importer.start(config, function(err) {
     if (err) {
-      console.log("failed to import: %s", err.message);
+      console.log("failure during import: %s", err.message);
       process.exit(-1);
     } else {
       console.log("import finished");
