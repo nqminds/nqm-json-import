@@ -23,7 +23,7 @@
     "minimist": "^1.2.0",
     "moment": "^2.10.6",
     "nqm-common-import": "^0.0.7",
-    "nqm-utils": "^0.0.5"
+    "nqm-utils": "^0.0.6"
   },
   "devDependencies": {
     "eslint": "^2.7.0"
