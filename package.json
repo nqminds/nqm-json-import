@@ -4,7 +4,7 @@
     "type": "git",
     "url": "git://github.com/nqminds/nqm-json-import.git"
   },
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "main": "index.js",
   "scripts": {
