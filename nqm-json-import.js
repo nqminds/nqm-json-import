@@ -147,8 +147,8 @@
     config.basedOnSchema = argv.basedOnSchema;
   }
 
-  if (!config.targetFolder) {
-    log("ERROR: not target folder specified");
+  if (!config.targetFolder && !config.targetDataset) {
+    log("ERROR: not target folder or dataset specified");
     process.exit(0);
   }
   

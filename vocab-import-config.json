@@ -1,0 +1,6 @@
+{
+  "sourceFile": "./tests/vocab-import.json",
+  "dataPath": "data",
+  "targetDataset": "__vocab__",
+  "upsertMode": false 
+}

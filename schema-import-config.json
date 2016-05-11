@@ -1,0 +1,6 @@
+{
+  "sourceFile": "./tests/schema-import.json",
+  "dataPath": "data",
+  "targetDataset": "__schemas__",
+  "upsertMode": false 
+}
