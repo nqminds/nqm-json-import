@@ -55,6 +55,13 @@
   }
 
   /*
+   * queryHost
+   */
+  if (argv.queryHost) {
+    config.queryHost = argv.queryHost;
+  }
+
+  /*
    * source file
    */
   if (argv.sourceFile) {
