@@ -33,12 +33,12 @@ It is recommended to specify a schema type using the ```basedOnSchema``` argumen
 nqm-json-import --basedOnSchema geojson --targetFolder <target folder id> --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features
 ```
 ### primary key
-It is also recommended to specify a primary key. This makes subsequent updates possible.
+It is also recommended to specify a primary key. This makes subsequent updates possible. Note it is not necessary to specify a primary key if the base schema already has one defined.
 ```
 nqm-json-import --primaryKey properties.LSOA01CD --basedOnSchema geojson --targetFolder <target folder id> --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json --dataPath features 
 ```
 ### update data
-You can import data to an existing dataset. The ```upsertMode``` indicates that the data from ```sourceFile``` will update any existing data that matches the given primary key, and if no data matching the primary key is found the data will be inserted.
+You can import data to an existing dataset. The ```upsertMode``` indicates that the data from ```sourceFile``` will update any existing data that matches the given primary key, and if no data matching the primary key is found the data will be inserted. You must specify a ```targetDataset``` to use upsert mode.
 ```
 nqm-json-import --upsertMode true --primaryKey properties.LSOA01CD --basedOnSchema geojson --targetDataset <target dataset id> --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json  --dataPath features
 ```
