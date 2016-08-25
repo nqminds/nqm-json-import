@@ -1,7 +1,9 @@
-#introduction
+# nqm-json-import #
+
+## introduction 
 Generic importer for importing JSON files into nqm datasets.
 
-##install
+## install
 
 ```
 npm install -g nqm-json-import
@@ -9,11 +11,11 @@ npm install -g nqm-json-import
 
 Use sudo if you get EACCESS errors.
 
-##target folder
+## target folder
 The TDX currently only supports importing data to a resource folder, i.e. you can not import a dataset to the root of your TDX workspace. Consequently
 you must create a folder to receive the imported dataset before you begin.
 
-##access token
+## access token
 You must create an access token with adequate permissions to add/edit a dataset in the target folder. To do this, go to the ```access tokens``` page
 on the TDX and create a token. Then go back to your target folder, and add permissions for the newly created access token to write to the folder.
 
@@ -21,7 +23,7 @@ You can do this by clicking on the ```info``` icon of the folder, then clicking 
 and then select the ```share tokens``` tab. In the ```share name``` field type the name of the access token you just created, and then 
 make sure you select ```Edit``` in the ```access``` drop-down. 
 
-##basic usage
+## basic usage
 
 Basic import of new dataset where the schema is inferred from the source JSON and no primary key is defined. The dataset will be created using a name based on the source file. Having no primary key means that it is not possible to update the data and all data will be appended to the dataset. The ```dataPath``` option indicates the path to the data in the source file.
 ```
@@ -42,7 +44,7 @@ You can import data to an existing dataset. The ```upsertMode``` indicates that 
 ```
 nqm-json-import --upsertMode true --primaryKey properties.LSOA01CD --basedOnSchema geojson --targetDataset <target dataset id> --credentials <tokenId:secret> --sourceFile tests/geoLSOA.json  --dataPath features
 ```
-##advanced usage
+## advanced usage
 It is possible to define the import parameters using a configuration file instead of via the command-line. This is necessary if you need to manually specify a schema rather than have it inferred by the importer. 
 
 The configuration file will vary depending on the type of data, but at a minimum it will contain details of the data source, the target dataset/folder. There are example JSON configuration files in the repo.
@@ -64,7 +66,7 @@ The configuration file will vary depending on the type of data, but at a minimum
   "primaryKey": ["properties.LSOA01CD"]    
 }
 ```
-#schema definition
+# schema definition
 For advanced use it is possible to specify the schema definition in the configuration file. Most schemas should be defined in the TDX,
 but it may be necessary to specify one-off schemas or augment existing schemas using settings in the configuration file.
 
@@ -81,7 +83,7 @@ For example:
   }
 ```
 TODO - document type definition.
-#options
+# options
 ```targetFolder``` - the id of the target folder (required)
 
 ```bulkCount``` - specify the number of documents to process at once. If your data contains small documents, this can be set to a high number for improved performance.
@@ -100,7 +102,7 @@ TODO - document type definition.
 
 ```schema``` - TODO - document properly
 
-##build
+## build
 Clone this repository then:
 ```
 cd nqm-json-import
